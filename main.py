@@ -52,11 +52,11 @@ ycor = -75
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 turtle_list = []
 for turtle_index in range(0, 6):
-    tim = Turtle(shape="turtle")
-    tim.color(colors[i])
-    turtle_list.append(tim)
-    tim.penup()
-    tim.goto(xcor, ycor)
+    new_turtle = Turtle(shape="turtle")
+    new_turtle.color(colors[i])
+    turtle_list.append(new_turtle)
+    new_turtle.penup()
+    new_turtle.goto(xcor, ycor)
     i += 1
     ycor += 25
 
@@ -67,13 +67,12 @@ while is_race_on:
     some_turtle = random.choice(turtle_list)
     rand_distance = random.randint(0, 10)
     some_turtle.forward(rand_distance)
-    race_pos = some_turtle.xcor()
-    if race_pos >= 230:
-        winner_color = some_turtle.color()
+    if some_turtle.xcor() >= 230:
+        winner_color = some_turtle.pencolor()
         is_race_on = False
-if winner_color[0] == user_bet:
-    print(f"Congrats, {winner_color[0]} turtle won the race. You win the bet!")
-else:
-    print(f"Sorry! The {winner_color[0]} turtle won the race, you lose your bet.")
+        if winner_color == user_bet:
+            print(f"Congrats, {winner_color} turtle won the race. You win the bet!")
+        else:
+            print(f"Sorry! The {winner_color} turtle won the race, you lose your bet.")
 
 my_screen.exitonclick()
